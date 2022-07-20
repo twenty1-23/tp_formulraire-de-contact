@@ -1,0 +1,5 @@
+Couleur 1 : #404eed
+Couleur 2: #23272a
+Couleur 3 : #5865f2
+Couleur 4 : #f7f7f7
+Couleur 5 : #0A9AD3

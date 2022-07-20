@@ -1,0 +1,23 @@
+form {
+    background-color: #23272a;
+    width: 300px;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+}
+
+input,
+select {
+    display: block;
+    margin: auto;
+}
+
+#select {
+    display: flex;
+    margin: auto;
+    width: 250px;
+}
+
+input {
+    width: 250px;
+}
