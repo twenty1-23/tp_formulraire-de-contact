@@ -6,8 +6,7 @@ form {
     margin: auto;
 }
 
-input,
-select {
+input, select, textarea {
     display: block;
     margin: auto;
 }

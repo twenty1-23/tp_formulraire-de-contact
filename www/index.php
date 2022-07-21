@@ -11,10 +11,13 @@
 <body>
     <div id="formulaire"> 
         <form>
-            <input type="email" placeholder="exmemple@email.com" required>
-            <input type="text" placeholder="nom" required>
-            <input type="password" placeholder="mot de passe" required>
-            <div id="select"> 
+            <input type="text" placeholder="Prénom" name="firstname" required>
+            <input type="text" placeholder="Nom" name="lastname" required>
+            <input type="text" placeholder="Sujet" name="subject" required>
+            <input type="text" placeholder="exmemple@email.com" name="email" required>
+            <textarea cols="30" rows="10" name="message" required></textarea>
+            <!-- <input type="password" placeholder="mot de passe" required> -->
+            <!-- <div id="select"> 
             <select name="date">
                 <option>1</option>
                 <option>2</option>
@@ -36,7 +39,7 @@
                 <option> 2024</option>
                 <option> 2025</option>
             </select>
-            </div>
+            </div> -->
             <input type="submit" value="ENVOYER">
         </form>
     </div>
