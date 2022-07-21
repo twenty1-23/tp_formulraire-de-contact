@@ -4,6 +4,7 @@
 
     $firstname = $lastname = $subject = $email = $message = "";
     $firstnameError = $lastnameError = $subjectError = $emailError = $messageError = "";
+    $noError = true;
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(IS_DEBUG){
@@ -14,26 +15,31 @@
 
         if(empty($firstname)){
             $firstnameError = "Veuillez renseigner votre prénom.";
+            $noError = false;
         }
         // lastname
         $lastname = isset($_POST["lastname"]) ? checkInput($_POST["lastname"]) : "";
         if(empty($lastname)){
             $lastnameError = "Veuillez renseigner votre nom.";
+            $noError = false;
         }
         //
         $subject = isset($_POST["subject"]) ? checkInput($_POST["subject"]) : "";
         if(empty($subject)){
             $subjectError = "Veuillez renseigner le sujet.";
+            $noError = false;
         }
         //
         $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
         if(!isEmail($email)){
             $emailError = "Veuillez vérifier votre email.";
+            $noError = false;
         }
         //
         $message = isset($_POST["message"]) ? checkInput($_POST["message"]) : "";
         if(empty($message)){
             $messageError = "Veuillez taper votre message.";
+            $noError = false;
         }
     }else{
         if(IS_DEBUG){
@@ -73,6 +79,7 @@
 </head>
 
 <body>
+
     <div id="formulaire"> 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
             <input type="text" placeholder="Prénom" name="firstname" value="<?php echo $firstname ?>" <?php echo !IS_DEBUG ? "required" : "" ?> >
