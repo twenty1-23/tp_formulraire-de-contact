@@ -10,13 +10,25 @@
             echo "POST";
         }
         $firstname = isset($_POST["firstname"]) ? checkInput($_POST["firstname"]) : "";
+        if(empty($firstname)){
+            $firstnameError = "Veuillez renseigner votre prénom.";
+        }
         $lastname = isset($_POST["lastname"]) ? checkInput($_POST["lastname"]) : "";
+        if(empty($lastname)){
+            $lastnameError = "Veuillez renseigner votre nom.";
+        }
         $subject = isset($_POST["subject"]) ? checkInput($_POST["subject"]) : "";
+        if(empty($subject)){
+            $subjectError = "Veuillez renseigner le sujet.";
+        }
         $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
         if(!isEmail($email)){
             $emailError = "Veuillez vérifier votre email.";
         }
         $message = isset($_POST["message"]) ? checkInput($_POST["message"]) : "";
+        if(empty($message)){
+            $firstnameError = "Veuillez taper votre message.";
+        }
     }else{
         if(IS_DEBUG){
             echo "Pas POST";
