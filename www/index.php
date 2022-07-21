@@ -9,25 +9,31 @@
         if(IS_DEBUG){
             echo "POST";
         }
+        // firstname
         $firstname = isset($_POST["firstname"]) ? checkInput($_POST["firstname"]) : "";
+
         if(empty($firstname)){
             $firstnameError = "Veuillez renseigner votre prénom.";
         }
+        // lastname
         $lastname = isset($_POST["lastname"]) ? checkInput($_POST["lastname"]) : "";
         if(empty($lastname)){
             $lastnameError = "Veuillez renseigner votre nom.";
         }
+        //
         $subject = isset($_POST["subject"]) ? checkInput($_POST["subject"]) : "";
         if(empty($subject)){
             $subjectError = "Veuillez renseigner le sujet.";
         }
+        //
         $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
         if(!isEmail($email)){
             $emailError = "Veuillez vérifier votre email.";
         }
+        //
         $message = isset($_POST["message"]) ? checkInput($_POST["message"]) : "";
         if(empty($message)){
-            $firstnameError = "Veuillez taper votre message.";
+            $messageError = "Veuillez taper votre message.";
         }
     }else{
         if(IS_DEBUG){
@@ -48,6 +54,11 @@
 
     function isEmail($email){
         return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+
+    function getError($error){
+        $html = '<p class="error">' . $error .'</p>'; 
+        return $html; 
     }
 ?>
 
@@ -70,7 +81,7 @@
             <input type="email" placeholder="exemple@email.com" name="email" value="<?php echo $email ?>" required>
             <?php 
                 if($emailError != ""){
-                    echo '<p class="error">' . $emailError .'</p>';   
+                    echo getError($emailError);   
                 }
             ?>
             <!-- <p class="error">Veuillez vérifier votre email.</p> -->
