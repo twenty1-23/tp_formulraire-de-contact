@@ -10,7 +10,13 @@
             echo "POST";
         }
         $firstname = isset($_POST['firstname']) ? checkInput($_POST("firstname")) :"";
+        if(empty($firstname)) {
+            $firstnameError = "Please enter a firstname";
+        }
         $lastname = isset($_POST['lastname']) ? checkInput($_POST("lastname")) :"";
+        if(empty($lastname)) {
+            $lastnameError = "Please enter a lastname";
+        }
         $email = isset($_POST['email']) ? checkInput($_POST("email")) :"";
         if (!checkEmail($email)) {
             $emailError = "Please check your email address";
@@ -36,6 +42,10 @@
     function checkEmail($email) {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
+
+    function getError($errorMessage){
+       return "<p class='error'>" . $error . "</p>";
+    }
 ?>
 
 <!doctype html>
@@ -52,7 +62,7 @@
 
             <?php
                 if($emailError !== ""){
-                    echo "<p class='error>" . $emailError . "</p>";
+                    echo getError($emailError);
                 }
             ?>
             <textarea name="message" placeholder="message(optional)" id="text-area" cols="30" rows="10" style="display: block; margin: auto; width: 250px;"><?php echo $message ?></textarea>
