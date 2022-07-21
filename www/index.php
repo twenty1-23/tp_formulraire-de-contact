@@ -3,6 +3,7 @@
     define("IS_DEBUG", $_SERVER["HTTP_HOST"] == "localhost" ? true : false);
 
     $firstname = $lastname = $subject = $email = $message = "";
+    $firstnameError = $lastnameError = $subjectError = $emailError = $messageError = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(IS_DEBUG){
@@ -12,7 +13,9 @@
         $lastname = isset($_POST["lastname"]) ? checkInput($_POST["lastname"]) : "";
         $subject = isset($_POST["subject"]) ? checkInput($_POST["subject"]) : "";
         $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
-        
+        if(!isEmail($email)){
+            $emailError = "Veuillez vérifier votre email.";
+        }
         $message = isset($_POST["message"]) ? checkInput($_POST["message"]) : "";
     }else{
         if(IS_DEBUG){
@@ -53,6 +56,12 @@
             <input type="text" placeholder="Nom" name="lastname" value="<?php echo $lastname ?>" required>
             <input type="text" placeholder="Sujet" name="subject" value="<?php echo $subject ?>" required>
             <input type="email" placeholder="exemple@email.com" name="email" value="<?php echo $email ?>" required>
+            <?php 
+                if($emailError != ""){
+                    echo '<p class="error">' . $emailError .'</p>';   
+                }
+            ?>
+            <!-- <p class="error">Veuillez vérifier votre email.</p> -->
             <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" required><?php echo $message ?></textarea>
             <!-- <input type="password" placeholder="mot de passe" required> -->
             <!-- <div id="select"> 

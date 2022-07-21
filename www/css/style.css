@@ -1,5 +1,5 @@
 form {
-    background-color: #23272a;
+    background-color: greenyellow;
     width: 300px;
     border-radius: 10px;
     display: block;
@@ -18,5 +18,12 @@ input, select, textarea {
 }
 
 input {
+    width: 250px;
+}
+
+.error{
+    color:red;
+    font-size: 10px;
+    margin: auto;
     width: 250px;
 }
