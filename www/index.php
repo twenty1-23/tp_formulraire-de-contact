@@ -2,13 +2,19 @@
     
     define("IS_DEBUG", $_SERVER["HTTP_HOST"] == "localhost" ? true : false);
 
-    // var_dump($_SERVER);
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $firstname = $lastname = $subject = $email = $message = "";
 
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $firstname = $_POST["firstname"];
+        $lastname = $_POST["lastname"];
+        $subject = $_POST["subject"];
+        $email = $_POST["email"];
+        $message = $_POST["message"];
     }else{
         if(IS_DEBUG){
             echo "Pas POST";
         }
+
     }
 ?>
 
