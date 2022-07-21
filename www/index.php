@@ -38,7 +38,7 @@
             <input type="text" placeholder="Nom" name="lastname" value="<?php echo $lastname ?>" required>
             <input type="text" placeholder="Sujet" name="subject" value="<?php echo $subject ?>" required>
             <input type="text" placeholder="exemple@email.com" name="email" value="<?php echo $email ?>" required>
-            <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" value="<?php echo $message ?>" required></textarea>
+            <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" required><?php echo $message ?></textarea>
             <!-- <input type="password" placeholder="mot de passe" required> -->
             <!-- <div id="select"> 
             <select name="date">
