@@ -1,9 +1,14 @@
 <?php
+    
+    define("IS_DEBUG", $_SERVER["HTTP_HOST"] == "localhost" ? true : false);
+
     // var_dump($_SERVER);
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     }else{
-        echo "Pas POST";
+        if(IS_DEBUG){
+            echo "Pas POST";
+        }
     }
 ?>
 
@@ -23,7 +28,7 @@
             <input type="text" placeholder="Prénom" name="firstname" required>
             <input type="text" placeholder="Nom" name="lastname" required>
             <input type="text" placeholder="Sujet" name="subject" required>
-            <input type="text" placeholder="exmemple@email.com" name="email" required>
+            <input type="text" placeholder="exemple@email.com" name="email" required>
             <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" required></textarea>
             <!-- <input type="password" placeholder="mot de passe" required> -->
             <!-- <div id="select"> 
