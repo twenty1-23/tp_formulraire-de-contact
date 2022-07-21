@@ -1,19 +1,21 @@
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {}
+    else {
+        echo "No POST";
+    }
+?>
+
 <!doctype html>
 <html lang="fr">
 
-<head>
-    <meta charset="utf-8">
-    <title>TP Discord</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css" media="all and (max-width: 768px)">
-</head>
+<?php require "./element/head.php"; ?>
 
 <body>
     <div id="formulaire">
-        <form>
-            <input type="email" placeholder="exmemple@email.com" required>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
             <input type="text" placeholder="firstname" name="firstname" required>
             <input type="text" placeholder="lastname" name="lastname" required>
+            <input type="email" placeholder="exmemple@email.com" required>
             <textarea name="message"  placeholder="message(optional)" id="text-area" cols="30" rows="10" style="display: block; margin: auto; width: 250px;"></textarea>
             <!-- <input type="password" placeholder="mot de passe" required> -->
             <!-- <div id="select"> 
