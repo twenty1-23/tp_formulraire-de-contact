@@ -5,6 +5,9 @@
     $firstname = $lastname = $subject = $email = $message = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(IS_DEBUG){
+            echo "POST";
+        }
         $firstname = $_POST["firstname"];
         $lastname = $_POST["lastname"];
         $subject = $_POST["subject"];
@@ -31,11 +34,11 @@
 <body>
     <div id="formulaire"> 
         <form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-            <input type="text" placeholder="Prénom" name="firstname" required>
-            <input type="text" placeholder="Nom" name="lastname" required>
-            <input type="text" placeholder="Sujet" name="subject" required>
-            <input type="text" placeholder="exemple@email.com" name="email" required>
-            <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" required></textarea>
+            <input type="text" placeholder="Prénom" name="firstname" value="<?php echo $firstname ?>" required>
+            <input type="text" placeholder="Nom" name="lastname" value="<?php echo $lastname ?>" required>
+            <input type="text" placeholder="Sujet" name="subject" value="<?php echo $subject ?>" required>
+            <input type="text" placeholder="exemple@email.com" name="email" value="<?php echo $email ?>" required>
+            <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" value="<?php echo $message ?>" required></textarea>
             <!-- <input type="password" placeholder="mot de passe" required> -->
             <!-- <div id="select"> 
             <select name="date">
