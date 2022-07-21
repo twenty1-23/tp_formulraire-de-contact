@@ -1,3 +1,12 @@
+<?php
+    // var_dump($_SERVER);
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    }else{
+        echo "Pas POST";
+    }
+?>
+
 <!doctype html>
 <html lang="fr">
 
