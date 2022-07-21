@@ -18,6 +18,12 @@ select {
     width: 250px;
 }
 
+#text-area {
+    display: block;
+    margin: auto;
+    width: 250px;
+}
+
 input {
     width: 250px;
 }
