@@ -12,6 +12,7 @@
         $lastname = isset($_POST["lastname"]) ? checkInput($_POST["lastname"]) : "";
         $subject = isset($_POST["subject"]) ? checkInput($_POST["subject"]) : "";
         $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
+        
         $message = isset($_POST["message"]) ? checkInput($_POST["message"]) : "";
     }else{
         if(IS_DEBUG){
@@ -23,7 +24,15 @@
         $input = trim($input);
         $input = stripslashes($input);
         $input = htmlspecialchars($input);
+        if(IS_DEBUG){
+            echo $input;
+            echo "<br>";
+        }
         return $input;
+    }
+
+    function isEmail($email){
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 ?>
 
