@@ -57,7 +57,7 @@
     }
 
     function getError($error){
-        $html = '<p class="error">' . $error .'</p>'; 
+        $html = '<h2 class="error">' . $error .'</h2>'; 
         return $html; 
     }
 ?>
@@ -75,17 +75,37 @@
 <body>
     <div id="formulaire"> 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
-            <input type="text" placeholder="Prénom" name="firstname" value="<?php echo $firstname ?>" required>
-            <input type="text" placeholder="Nom" name="lastname" value="<?php echo $lastname ?>" required>
-            <input type="text" placeholder="Sujet" name="subject" value="<?php echo $subject ?>" required>
-            <input type="email" placeholder="exemple@email.com" name="email" value="<?php echo $email ?>" required>
+            <input type="text" placeholder="Prénom" name="firstname" value="<?php echo $firstname ?>" <?php echo !IS_DEBUG ? "required" : "" ?> >
+            <?php
+                if($firstnameError != ""){
+                    echo getError($firstnameError);
+                }
+            ?>
+            <input type="text" placeholder="Nom" name="lastname" value="<?php echo $lastname ?>" <?php echo !IS_DEBUG ? "required" : "" ?> >
+            <?php
+                if($lastnameError != ""){
+                    echo getError($lastnameError);
+                }
+            ?>
+            <input type="text" placeholder="Sujet" name="subject" value="<?php echo $subject ?>" <?php echo !IS_DEBUG ? "required" : "" ?> >
+            <?php
+                if($subjectError != ""){
+                    echo getError($subjectError);
+                }
+            ?>
+            <input type="email" placeholder="exemple@email.com" name="email" value="<?php echo $email ?>" <?php echo !IS_DEBUG ? "required" : "" ?> >
             <?php 
                 if($emailError != ""){
                     echo getError($emailError);   
                 }
             ?>
             <!-- <p class="error">Veuillez vérifier votre email.</p> -->
-            <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" required><?php echo $message ?></textarea>
+            <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" <?php echo !IS_DEBUG ? "required" : "" ?> ><?php echo $message ?></textarea>
+            <?php
+                if($messageError != ""){
+                    echo getError($messageError);
+                }
+            ?>
             <!-- <input type="password" placeholder="mot de passe" required> -->
             <!-- <div id="select"> 
             <select name="date">
