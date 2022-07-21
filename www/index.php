@@ -10,12 +10,12 @@
 
 <body>
     <div id="formulaire"> 
-        <form>
+        <form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
             <input type="text" placeholder="Prénom" name="firstname" required>
             <input type="text" placeholder="Nom" name="lastname" required>
             <input type="text" placeholder="Sujet" name="subject" required>
             <input type="text" placeholder="exmemple@email.com" name="email" required>
-            <textarea cols="30" rows="10" name="message" required></textarea>
+            <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" required></textarea>
             <!-- <input type="password" placeholder="mot de passe" required> -->
             <!-- <div id="select"> 
             <select name="date">
