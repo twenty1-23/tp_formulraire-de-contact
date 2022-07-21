@@ -8,16 +8,22 @@
         if(IS_DEBUG){
             echo "POST";
         }
-        $firstname = $_POST["firstname"];
-        $lastname = $_POST["lastname"];
-        $subject = $_POST["subject"];
-        $email = $_POST["email"];
-        $message = $_POST["message"];
+        $firstname = isset($_POST["firstname"]) ? checkInput($_POST["firstname"]) : "";
+        $lastname = isset($_POST["lastname"]) ? checkInput($_POST["lastname"]) : "";
+        $subject = isset($_POST["subject"]) ? checkInput($_POST["subject"]) : "";
+        $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
+        $message = isset($_POST["message"]) ? checkInput($_POST["message"]) : "";
     }else{
         if(IS_DEBUG){
             echo "Pas POST";
         }
+    }
 
+    function checkInput($input){
+        $input = trim($input);
+        $input = stripslashes($input);
+        $input = htmlspecialchars($input);
+        return $input;
     }
 ?>
 
@@ -33,11 +39,11 @@
 
 <body>
     <div id="formulaire"> 
-        <form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
             <input type="text" placeholder="Prénom" name="firstname" value="<?php echo $firstname ?>" required>
             <input type="text" placeholder="Nom" name="lastname" value="<?php echo $lastname ?>" required>
             <input type="text" placeholder="Sujet" name="subject" value="<?php echo $subject ?>" required>
-            <input type="text" placeholder="exemple@email.com" name="email" value="<?php echo $email ?>" required>
+            <input type="email" placeholder="exemple@email.com" name="email" value="<?php echo $email ?>" required>
             <textarea cols="30" placeholder="Tapez votre message." rows="10" name="message" required><?php echo $message ?></textarea>
             <!-- <input type="password" placeholder="mot de passe" required> -->
             <!-- <div id="select"> 
