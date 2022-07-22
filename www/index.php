@@ -4,9 +4,9 @@
 
     $firstname = $lastname = $subject = $email = $message = "";
     $firstnameError = $lastnameError = $subjectError = $emailError = $messageError = "";
-    $noError = true;
-
+    
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $noError = true;
         if(IS_DEBUG){
             echo "POST";
         }
@@ -136,7 +136,7 @@
             </select>
             </div> -->
             <input type="submit" value="ENVOYER">
-            <p class="message">Message envoyé !</p>
+            <p class="message" style="display: <?php echo (isset($noError) && $noError) ? "block" : "none"; ?>" >Message envoyé !</p>
         </form>
     </div>
 </body></html>
