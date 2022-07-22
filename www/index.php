@@ -2,8 +2,8 @@
     
     define("IS_DEBUG", $_SERVER["HTTP_HOST"] == "localhost" ? true : false);
 
-    $firstname = $lastname = $subject = $email = $message = "";
-    $firstnameError = $lastnameError = $subjectError = $emailError = $messageError = "";
+    $firstname = $lastname = $subject = $tel = $email = $message = "";
+    $firstnameError = $lastnameError = $subjectError = $telError = $emailError = $messageError = "";
     
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $noError = true;
@@ -37,6 +37,11 @@
             $subjectError = "Veuillez renseigner le sujet.";
         }
         //
+        $tel = isset($_POST["tel"]) ? checkInput($_POST["tel"]) : "";
+        if(empty($subject)){
+            $subjectError = "Veuillez renseigner votre numéro.";
+        }
+        //
         $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
         if(!isEmail($email)){
             $emailError = "Veuillez vérifier votre email.";
@@ -51,7 +56,7 @@
             $emailText = "Message : " . $message . "\n";
         }
 
-        $noError = $firstnameError == "" && $lastnameError == "" && $subjectError == "" && $emailError == "" && $messageError == "";
+        $noError = $firstnameError == "" && $lastnameError == "" && $subjectError == "" && $telError == "" && $emailError == "" && $messageError == "";
 
 
         if ($noError) {
@@ -122,6 +127,12 @@
             <?php 
                 if($emailError != ""){
                     echo getError($emailError);   
+                }
+            ?>
+            <input type="tel" placeholder = "09 96 69 69 69" name="tel" value="<?php echo $tel ?>" <?php echo !IS_DEBUG ? "required" : "" ?> >
+            <?php 
+                if ($telError != ""){
+                    echo getError($telError);
                 }
             ?>
             <!-- <p class="error">Veuillez vérifier votre email.</p> -->
