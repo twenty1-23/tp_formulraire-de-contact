@@ -9,34 +9,41 @@
         if (IS_DEBUG) {
             echo "POST";
         }
-        $firstname = isset($_POST['firstname']) ? checkInput($_POST("firstname")) :"";
+        $firstname = isset($_POST['firstname']) ? checkInput($_POST['firstname']) :"";
         if(empty($firstname)) {
             $firstnameError = "Please enter a firstname";
         }
-        $lastname = isset($_POST['lastname']) ? checkInput($_POST("lastname")) :"";
+        $lastname = isset($_POST['lastname']) ? checkInput($_POST["lastname"]) :"";
         if(empty($lastname)) {
             $lastnameError = "Please enter a lastname";
         }
-        $email = isset($_POST['email']) ? checkInput($_POST("email")) :"";
+        $email = isset($_POST['email']) ? checkInput($_POST["email"]) :"";
         if (!checkEmail($email)) {
             $emailError = "Please check your email address";
         }
-        $message = isset($_POST['message']) ? checkInput($_POST("message")) :"";
+        $message = isset($_POST['message']) ? checkInput($_POST["message"]) :"";
+        if (empty($message)) {
+           $messageError = "Please enter a message";
+        }
 
     }
     else {
         echo "No POST";
     }
 
-    function checkInput($input) {
-        $input = trim($input);
-        $input = stripcslashes($input);
-        $input = htmlspecialchars($input);
-            if (IS_DEBUG) {
-                echo $input;
-            }
-        return $input;
+    // function checkInput($input) {
+    //     $input = trim($input);
+    //     $input = stripcslashes($input);
+    //     $input = htmlspecialchars($input);
+    //         if (IS_DEBUG) {
+    //             echo $input;
+    //         }
+    //     return $input;
             
+    // }
+
+    function checkInput($input) {
+        return $input;
     }
 
     function checkEmail($email) {
@@ -44,7 +51,7 @@
     }
 
     function getError($errorMessage){
-       return "<p class='error'>" . $error . "</p>";
+       return "<p class='error'>" . $errorMessage . "</p>";
     }
 ?>
 
