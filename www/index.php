@@ -8,7 +8,7 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $noError = true;
         if(IS_DEBUG){
-            echo "POST";
+            echo "POST<br>";
         }
         // firstname
         $firstname = isset($_POST["firstname"]) ? checkInput($_POST["firstname"]) : "";
