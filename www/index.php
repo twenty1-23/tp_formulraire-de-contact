@@ -6,20 +6,26 @@
     $firstnameError = $lastnameError = $subjectError = $emailError = $messageError = "";
     
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $noError = true;
         if(IS_DEBUG){
             echo "POST<br>";
         }
+        $noError = true;
+        $emailTo = "nvformateurdwdm@gmail.com";
+        $emailText = "";
         // firstname
         $firstname = isset($_POST["firstname"]) ? checkInput($_POST["firstname"]) : "";
 
         if(empty($firstname)){
             $firstnameError = "Veuillez renseigner votre prénom.";
+        }else{
+            $emailText .= "Prénom : " . $firstname . "\n";
         }
         // lastname
         $lastname = isset($_POST["lastname"]) ? checkInput($_POST["lastname"]) : "";
         if(empty($lastname)){
             $lastnameError = "Veuillez renseigner votre nom.";
+        }else{
+            $emailText .= "Nom : " . $lastname . "\n";
         }
         //
         $subject = isset($_POST["subject"]) ? checkInput($_POST["subject"]) : "";
@@ -30,14 +36,23 @@
         $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
         if(!isEmail($email)){
             $emailError = "Veuillez vérifier votre email.";
+        }else{
+            $emailText .= "email : " . $email . "\n";
         }
         //
         $message = isset($_POST["message"]) ? checkInput($_POST["message"]) : "";
         if(empty($message)){
             $messageError = "Veuillez taper votre message.";
+        }else{
+            $emailText .= "Message : " . $message . "\n";
         }
 
         $noError = $firstnameError == "" && $lastnameError == "" && $subjectError == "" && $emailError == "" && $messageError == "";
+
+        if($noError){
+            $headers = "From: $firstname $lastname <$email>\r\nReply-To: $email";
+            mail($emailTo, $subject, $emailText, $headers);
+        }
 
     }else{
         if(IS_DEBUG){
