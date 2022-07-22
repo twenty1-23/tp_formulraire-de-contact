@@ -6,6 +6,13 @@
     $firstnameError = $lastnameError = $subjectError = $emailError = $messageError = "";
     
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+<<<<<<< Updated upstream
+=======
+        $noError = true;
+        $emailTo = "malacrichard@gmail.com";
+        $emailText = "";
+        
+>>>>>>> Stashed changes
         if(IS_DEBUG){
             echo "POST<br>";
         }
@@ -17,15 +24,25 @@
 
         if(empty($firstname)){
             $firstnameError = "Veuillez renseigner votre prénom.";
+<<<<<<< Updated upstream
         }else{
             $emailText .= "Prénom : " . $firstname . "\n";
+=======
+        } else {
+            $emailText .= "Firstname : " . $firstname . "\n";
+>>>>>>> Stashed changes
         }
         // lastname
         $lastname = isset($_POST["lastname"]) ? checkInput($_POST["lastname"]) : "";
         if(empty($lastname)){
             $lastnameError = "Veuillez renseigner votre nom.";
+<<<<<<< Updated upstream
         }else{
             $emailText .= "Nom : " . $lastname . "\n";
+=======
+        } else {
+            $emailText = "Lastname : " . $lastname . "\n";
+>>>>>>> Stashed changes
         }
         //
         $subject = isset($_POST["subject"]) ? checkInput($_POST["subject"]) : "";
@@ -36,24 +53,43 @@
         $email = isset($_POST["email"]) ? checkInput($_POST["email"]) : "";
         if(!isEmail($email)){
             $emailError = "Veuillez vérifier votre email.";
+<<<<<<< Updated upstream
         }else{
             $emailText .= "email : " . $email . "\n";
+=======
+        } else {
+            $emailText = "Email : " . $email . "\n";
+>>>>>>> Stashed changes
         }
         //
         $message = isset($_POST["message"]) ? checkInput($_POST["message"]) : "";
         if(empty($message)){
             $messageError = "Veuillez taper votre message.";
+<<<<<<< Updated upstream
         }else{
             $emailText .= "Message : " . $message . "\n";
+=======
+        } else {
+            $emailText = "Message : " . $message . "\n";
+>>>>>>> Stashed changes
         }
 
         $noError = $firstnameError == "" && $lastnameError == "" && $subjectError == "" && $emailError == "" && $messageError == "";
 
+<<<<<<< Updated upstream
         if($noError){
             $headers = "From: $firstname $lastname <$email>\r\nReply-To: $email";
             mail($emailTo, $subject, $emailText, $headers);
         }
 
+=======
+
+        if ($noError) {
+            $headers = "From : $firstname $lastname <$email>\r\nReply-To : $email";
+            mail($emailTo, $subject, $emailText, $headers);
+        }
+        
+>>>>>>> Stashed changes
     }else{
         if(IS_DEBUG){
             echo "Pas POST";
