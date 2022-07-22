@@ -136,6 +136,7 @@
             </select>
             </div> -->
             <input type="submit" value="ENVOYER">
+            <p class="message">Message envoyé !</p>
         </form>
     </div>
 </body></html>

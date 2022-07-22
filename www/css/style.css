@@ -27,3 +27,13 @@ input {
     margin: auto;
     width: 250px;
 }
+
+.message{
+    margin: auto;
+    display: block;
+    width: 100%;
+    border-style: solid;
+    text-align: center;
+    color: green;
+    /* background-color: white; */
+}
